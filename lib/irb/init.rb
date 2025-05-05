@@ -123,6 +123,13 @@ module IRB # :nodoc:
         :PROMPT_C => "?> ",
         :RETURN => "=> %s\n"
       },
+      :RUBY => {
+        :PROMPT_I => ">> ",
+        :PROMPT_S => "%l> ",
+        :PROMPT_C => "?> ",
+        :RETURN => "# => %s\n",
+        :FINISH_WITHOUT_PROMPT => true,
+      },
       :INF_RUBY => {
         :PROMPT_I => "%N(%m):%03n> ",
         :PROMPT_S => nil,
