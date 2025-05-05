@@ -509,6 +509,9 @@ module IRB
       Reline.output = @stdout
       Reline.prompt_proc = @prompt_proc
       Reline.auto_indent_proc = @auto_indent_proc if @auto_indent_proc
+      if IRB.CurrentContext.finish_without_prompt && Reline.respond_to?(:render_finished_without_prompt=)
+        Reline.render_finished_without_prompt = IRB.CurrentContext.finish_without_prompt
+      end
       if l = Reline.readmultiline(@prompt, false, &@check_termination_proc)
         Reline::HISTORY.push(l) if !l.empty? && l != Reline::HISTORY.to_a.last
         @line[@line_no += 1] = l + "\n"
