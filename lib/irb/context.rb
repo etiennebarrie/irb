@@ -314,6 +314,7 @@ module IRB
     # The format of the return statement, set by #prompt_mode= using the
     # +:RETURN+ of the +mode+ passed to set the current #prompt_mode.
     attr_accessor :return_format
+    attr_accessor :finish_without_prompt
 
     # Whether <code>^C</code> (+control-c+) will be ignored or not.
     #
@@ -479,6 +480,9 @@ module IRB
         @auto_indent_mode = ai
       else
         @auto_indent_mode = IRB.conf[:AUTO_INDENT]
+      end
+      if pconf.key?(:FINISH_WITHOUT_PROMPT)
+        @finish_without_prompt = pconf[:FINISH_WITHOUT_PROMPT]
       end
     end
 
